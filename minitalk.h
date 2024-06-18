@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 20:20:51 by picarlie          #+#    #+#             */
-/*   Updated: 2024/06/18 14:51:44 by picarlie         ###   ########.fr       */
+/*   Updated: 2024/06/18 15:56:05 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 # define MINITALK_H
 
 # include "./Libft/libft.h"
+# include <signal.h>
 
 #endif

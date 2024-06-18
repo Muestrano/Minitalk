@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 20:20:58 by picarlie          #+#    #+#             */
-/*   Updated: 2024/06/18 14:53:12 by picarlie         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:24:53 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,41 @@ include printf atoi
 
 #include "minitalk.h"
 
+void	sig_sender(int pid, int c)
+{
+	int	i;
 
+	i = 0;
+	while (i < 8)
+	{
+		if (i & 1)
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		c >> 1;
+		i++;
+		usleep(1000);
+	}
+}
 
 int	main(int argc, char **argv)
 {
 	int	serv_PID;
+	int	len_msg;
+	int	i;
 
-	if (argc != 3 || !argv[1] || !argv[2])
+	if (argc != 3 || !argv[2])
 		return (ft_printf("An error has occured, please launch the program\
 		 with this format :\t./client <server_PID> <message_to_send>\n"), 1);
 	serv_PID = ft_atoi(argv[1]);
+	len_msg = ft_strlen(argv[2]);
+	sig_sender(serv_PID, len_msg);
+	i = 0;
+	while (argv[2][i])
+	{
+		sig_sender(serv_PID, argv[2][i]);
+		i++;
+	}
+	sig_sender(serv_PID, 0);
 	return (0);
 }

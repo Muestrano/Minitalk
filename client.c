@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 20:20:58 by picarlie          #+#    #+#             */
-/*   Updated: 2024/06/18 16:24:53 by picarlie         ###   ########.fr       */
+/*   Updated: 2024/06/18 17:51:50 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	sig_sender(int pid, int c)
 	while (i < 8)
 	{
 		if (i & 1)
-			kill(pid, SIGUSR1);
+			(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
 		c >> 1;
